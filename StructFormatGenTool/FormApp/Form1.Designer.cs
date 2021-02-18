@@ -30,7 +30,7 @@ namespace FormApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -195,6 +195,7 @@ namespace FormApp
             this.btn_export.TabIndex = 37;
             this.btn_export.Text = "Export";
             this.btn_export.UseVisualStyleBackColor = false;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // LV_MSG
             // 
@@ -207,7 +208,7 @@ namespace FormApp
             this.LV_MSG.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LV_MSG.HideSelection = false;
             this.LV_MSG.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem4});
             this.LV_MSG.Location = new System.Drawing.Point(16, 251);
             this.LV_MSG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LV_MSG.MultiSelect = false;

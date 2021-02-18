@@ -84,6 +84,10 @@
       <Project>{58a0e631-145a-4ad9-ab3f-6d94796f4db5}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StructGenerator\Generator.csproj">
+      <Project>{38af0a27-df68-459b-83d3-99fda699ec16}</Project>
+      <Name>Generator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
