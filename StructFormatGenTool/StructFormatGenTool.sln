@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{58A0E631-145A-4AD9-AB3F-6D94796F4DB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormApp", "FormApp\FormApp.csproj", "{495A4B2B-C71D-4D91-B363-3E3DD422AF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "StructGenerator\Generator.csproj", "{38AF0A27-DF68-459B-83D3-99FDA699EC16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58A0E631-145A-4AD9-AB3F-6D94796F4DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A0E631-145A-4AD9-AB3F-6D94796F4DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A0E631-145A-4AD9-AB3F-6D94796F4DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A0E631-145A-4AD9-AB3F-6D94796F4DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495A4B2B-C71D-4D91-B363-3E3DD422AF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495A4B2B-C71D-4D91-B363-3E3DD422AF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495A4B2B-C71D-4D91-B363-3E3DD422AF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495A4B2B-C71D-4D91-B363-3E3DD422AF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AF0A27-DF68-459B-83D3-99FDA699EC16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AF0A27-DF68-459B-83D3-99FDA699EC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AF0A27-DF68-459B-83D3-99FDA699EC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AF0A27-DF68-459B-83D3-99FDA699EC16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDE8D3B3-6EBC-461D-BDCE-6447CE4C769A}
+	EndGlobalSection
+EndGlobal
