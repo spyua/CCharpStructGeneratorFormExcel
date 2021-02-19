@@ -5,11 +5,11 @@ using System.Text;
 
 namespace StructGenerator.Format
 {
-    class SqlTableFile : ExcelFile, IFile
+    class SQLTableFile : ExcelFile, IFile
     {
         private string _decodeStr;
 
-        public SqlTableFile(ExcelFile fileInfo)
+        public SQLTableFile(ExcelFile fileInfo)
         {
             StarSheet = fileInfo.StarSheet;
             StarReadRaw = fileInfo.StarReadRaw;

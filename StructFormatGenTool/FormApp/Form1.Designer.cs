@@ -30,11 +30,9 @@ namespace FormApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Tb_OutputFileName = new System.Windows.Forms.TextBox();
             this.group_excel_set = new System.Windows.Forms.GroupBox();
             this.edit_star_column = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +45,9 @@ namespace FormApp
             this.LV_MSG = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Tb_OutputFileName = new System.Windows.Forms.TextBox();
             this.btn_save_path = new System.Windows.Forms.Button();
             this.cbx_export_format = new System.Windows.Forms.ComboBox();
             this.btn_select_path = new System.Windows.Forms.Button();
@@ -84,25 +84,6 @@ namespace FormApp
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Excel Export Strct";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(27, 158);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 14);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "OutPut File Name";
-            // 
-            // Tb_OutputFileName
-            // 
-            this.Tb_OutputFileName.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_OutputFileName.Location = new System.Drawing.Point(148, 155);
-            this.Tb_OutputFileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Tb_OutputFileName.Name = "Tb_OutputFileName";
-            this.Tb_OutputFileName.Size = new System.Drawing.Size(135, 22);
-            this.Tb_OutputFileName.TabIndex = 40;
             // 
             // group_excel_set
             // 
@@ -208,7 +189,7 @@ namespace FormApp
             this.LV_MSG.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LV_MSG.HideSelection = false;
             this.LV_MSG.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem2});
             this.LV_MSG.Location = new System.Drawing.Point(16, 251);
             this.LV_MSG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LV_MSG.MultiSelect = false;
@@ -246,6 +227,16 @@ namespace FormApp
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ExcelPathSetting";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(27, 158);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(119, 14);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "OutPut File Name";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -254,6 +245,15 @@ namespace FormApp
             this.label4.Size = new System.Drawing.Size(105, 14);
             this.label4.TabIndex = 32;
             this.label4.Text = "Export Format:";
+            // 
+            // Tb_OutputFileName
+            // 
+            this.Tb_OutputFileName.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tb_OutputFileName.Location = new System.Drawing.Point(148, 155);
+            this.Tb_OutputFileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Tb_OutputFileName.Name = "Tb_OutputFileName";
+            this.Tb_OutputFileName.Size = new System.Drawing.Size(135, 22);
+            this.Tb_OutputFileName.TabIndex = 40;
             // 
             // btn_save_path
             // 
@@ -331,6 +331,8 @@ namespace FormApp
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.group_excel_set.ResumeLayout(false);

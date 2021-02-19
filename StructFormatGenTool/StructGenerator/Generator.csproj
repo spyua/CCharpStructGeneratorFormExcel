@@ -64,7 +64,7 @@
     <Compile Include="FormatFactory.cs" />
     <Compile Include="OutFormat.cs" />
     <Compile Include="Format\DBPoCoClassFile.cs" />
-    <Compile Include="Format\SqlTableFile.cs" />
+    <Compile Include="Format\SQLTableFile.cs" />
     <Compile Include="Format\StructFile.cs" />
     <Compile Include="IFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

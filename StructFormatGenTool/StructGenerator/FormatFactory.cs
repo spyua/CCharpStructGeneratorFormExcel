@@ -17,7 +17,7 @@ namespace Generator
             if (format == OutFormat.Type.SQL_TABLE_FILE)
             {
                 var excelfile = file as ExcelFile;
-                return new SqlTableFile(excelfile);
+                return new SQLTableFile(excelfile);
             }
 
             if (format == OutFormat.Type.DB_POCO_CLASS_FILE)
