@@ -22,8 +22,8 @@ namespace Generator
 
             if (format == OutFormat.Type.DB_POCO_CLASS_FILE)
             {
-                var excelfile = file as FileInfo;
-                return new DBPoCoClassFile(excelfile);
+                var fileInfo = file as FileInfo;
+                return new DBPoCoClassFile(fileInfo);
             }
 
             return null;

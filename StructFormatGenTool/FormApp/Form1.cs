@@ -26,6 +26,7 @@ namespace FormApp
             edit_star_sheet.Text = "1";
             edit_star_raw.Text = "3";
             edit_star_column.Text = "3";
+            Tb_OutputFileName.Text = "Demo";
         }
 
         private void btn_select_path_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace FormApp
             {
                 SourcePath = tb_select_path.Text,
                 ExportPath = tb_save_path.Text,
-                OutFileName = "Demo",
+                OutFileName = Tb_OutputFileName.Text,
 
                 StarSheet = Int32.Parse(edit_star_sheet.Text),
                 StarReadRaw = Int32.Parse(edit_star_raw.Text),
@@ -112,27 +113,6 @@ namespace FormApp
                 throw new ArgumentNullException(errorMessage);
             }
         }
-
-
-        //private bool InvaildText(string text)
-        //    => InvaildSetting((txt) => {
-        //        if (string.IsNullOrEmpty(text))
-        //        {
-        //            return false;
-        //        }
-                    
-        //        return true;
-        //    }, text);
-
-        //private bool InvaildSetting(Func<string, bool> func, string text)
-        //{
-        //    return func.Invoke(text);
-        //}
-
-        //private void ShowMessage(string msg)
-        //{
-        //    MessageBox.Show(msg);
-        //}
-
+ 
     }
 }
