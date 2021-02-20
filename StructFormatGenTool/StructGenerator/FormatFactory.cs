@@ -6,7 +6,7 @@ namespace Generator
 {
     public class FormatFactory
     {
-        public IFile Create(OutFormat.Type format, object file)
+        public static IFile Create(OutFormat.Type format, object file)
         {
             if(format == OutFormat.Type.STRUCT_FILE)
             {

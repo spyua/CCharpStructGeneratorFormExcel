@@ -1,5 +1,6 @@
 ﻿using Core.Help;
 using Generator;
+using StructGenerator;
 using System;
 using System.Windows.Forms;
 
@@ -22,6 +23,9 @@ namespace FormApp
         private void Form1_Shown(object sender, EventArgs e)
         {
             cbx_export_format.SelectedIndex = 0;
+            edit_star_sheet.Text = "1";
+            edit_star_raw.Text = "3";
+            edit_star_column.Text = "3";
         }
 
         private void btn_select_path_Click(object sender, EventArgs e)
@@ -56,67 +60,79 @@ namespace FormApp
 
         private void btn_export_Click(object sender, EventArgs e)
         {
-            if (!InvaildSettingPara())
+            if (!InvalidSettingPara())
                 return;
+
+            var outType = (OutFormat.Type)cbx_export_format.SelectedIndex;
+            var excelFile = new ExcelFile()
+            {
+                SourcePath = tb_select_path.Text,
+                ExportPath = tb_save_path.Text,
+                OutFileName = "Demo",
+
+                StarSheet = Int32.Parse(edit_star_sheet.Text),
+                StarReadRaw = Int32.Parse(edit_star_raw.Text),
+                StarReadCloumn = Int32.Parse(edit_star_column.Text),
+            };
+
+            var file = FormatFactory.Create(outType, excelFile);
+            file.Decode();
+            file.GenFile();
         }
 
-        private bool InvaildSettingPara()
+        private void ValidtionText()
         {
+            AssertText(tb_select_path.Text, "Pls set the source file path");
+            AssertText(tb_save_path.Text, "Pls set the save file path");
 
-            
-
-            if (string.IsNullOrEmpty(tb_select_path.Text))
-            {
-                ShowMessage("Pls set the source file path");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(tb_save_path.Text))
-            {
-                ShowMessage("Pls set the save file path");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(edit_star_sheet.Text))
-            {
-                ShowMessage("Pls set the read star sheet");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(edit_star_raw.Text))
-            {
-                ShowMessage("Pls set the read star raw");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(edit_star_column.Text))
-            {
-                ShowMessage("Pls set the read star column");
-                return false;
-            }
-
-            return true;
+            AssertText(edit_star_sheet.Text, "Pls set the read star sheet");
+            AssertText(edit_star_raw.Text, "Pls set the read star raw");
+            AssertText(edit_star_column.Text, "Pls set the read star column");
         }
 
-        private bool InvaildText(string text)
-            => InvaildSetting((txt) => {
-                if (string.IsNullOrEmpty(text))
-                {
-                    return false;
-                }
-                    
+        private bool InvalidSettingPara()
+        {
+            try
+            {
+                ValidtionText();
                 return true;
-            }, text);
 
-        private bool InvaildSetting(Func<string, bool> func, string text)
+            }
+            catch (ArgumentNullException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return false;
+        }
+    
+        private void AssertText(string text, string errorMessage)
         {
-            return func.Invoke(text);
+            if (string.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(errorMessage);
+            }
         }
 
-        private void ShowMessage(string msg)
-        {
-            MessageBox.Show(msg);
-        }
+
+        //private bool InvaildText(string text)
+        //    => InvaildSetting((txt) => {
+        //        if (string.IsNullOrEmpty(text))
+        //        {
+        //            return false;
+        //        }
+                    
+        //        return true;
+        //    }, text);
+
+        //private bool InvaildSetting(Func<string, bool> func, string text)
+        //{
+        //    return func.Invoke(text);
+        //}
+
+        //private void ShowMessage(string msg)
+        //{
+        //    MessageBox.Show(msg);
+        //}
 
     }
 }

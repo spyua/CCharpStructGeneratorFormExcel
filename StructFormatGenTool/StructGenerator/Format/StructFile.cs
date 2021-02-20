@@ -1,6 +1,8 @@
 ﻿using ClosedXML.Excel;
 using Core.Help;
+using Microsoft.CSharp;
 using System;
+using System.CodeDom.Compiler;
 using System.Linq;
 using System.Text;
 
@@ -69,11 +71,33 @@ namespace StructGenerator.Format
         {
             if (_decodeStr == null)
                 return false;
-
+            
             var genOK = FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".cs");
+            genOK = OutPutDll(_decodeStr, ExportPath + OutFileName + ".dll");
 
             return genOK;
         }
+
+        private bool OutPutDll(string codeContent, string path)
+        {
+            var codeProvider = new CSharpCodeProvider();
+            var icc = codeProvider.CreateCompiler();
+            var parameters = new CompilerParameters();
+            parameters.GenerateExecutable = false;
+            parameters.OutputAssembly = path;
+
+            try
+            {
+                var results = icc.CompileAssemblyFromSource(parameters, codeContent);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+        }
+
 
         private string ClearInvaildSymbol(string txt)
         {
