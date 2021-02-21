@@ -2,6 +2,7 @@
 using Generator;
 using StructGenerator;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FormApp
@@ -77,8 +78,20 @@ namespace FormApp
             };
 
             var file = FormatFactory.Create(outType, excelFile);
-            file.Decode();
-            file.GenFile();
+
+            try
+            {
+                var decodeStr = file.Decode();
+                DisplayConsole("[Info]" + decodeStr);
+
+                file.GenFile();
+                DisplayConsole($"[SUCCESS] Gen {outType} Finish");
+            }
+            catch(Exception expection)
+            {
+                DisplayConsole("[ERROR]"+expection.Message);
+            }
+       
         }
 
         private void ValidtionText()
@@ -114,5 +127,19 @@ namespace FormApp
             }
         }
  
+        private void DisplayConsole(string text)
+        {
+            var lvi = new ListViewItem();
+            lvi.Text = text;
+
+            if (text.StartsWith("[ERROR]"))
+                lvi.ForeColor = Color.Red;
+
+            if (text.StartsWith("[SUCCESS]"))
+                lvi.ForeColor = Color.Green;
+
+            LV_MSG.Items.Add(lvi);
+        }
+
     }
 }

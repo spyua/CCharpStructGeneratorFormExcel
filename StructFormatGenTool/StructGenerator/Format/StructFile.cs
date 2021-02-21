@@ -69,13 +69,18 @@ namespace StructGenerator.Format
 
         public bool GenFile()
         {
-            if (_decodeStr == null)
-                return false;
-            
-            var genOK = FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".cs");
-            genOK = OutPutDll(_decodeStr, ExportPath + OutFileName + ".dll");
+            if (string.IsNullOrEmpty(_decodeStr))
+                throw new ArgumentNullException("Decod Faile. Code Str is empty.");
 
-            return genOK;
+            try
+            {
+                FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".cs");
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException(e.Message);
+            }
         }
 
         private bool OutPutDll(string codeContent, string path)

@@ -1,6 +1,7 @@
 ﻿using Core.Help;
 using Generator.Format.DBPoCoGen;
 using StructGenerator;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -29,12 +30,20 @@ namespace Generator.Format
 
         public bool GenFile()
         {
-            if (_decodeStr == null)
-                return false;
 
-            var genOK = FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".cs");
-    
-            return genOK;
+            if (string.IsNullOrEmpty(_decodeStr))
+                throw new ArgumentNullException("Decod Faile. Code Str is empty.");
+
+            try
+            {
+                FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".cs");
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException(e.Message);
+            }
+
         }
     }
 }

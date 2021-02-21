@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using Core.Help;
+using System;
 using System.Linq;
 using System.Text;
 
@@ -31,8 +32,7 @@ namespace StructGenerator.Format
                 var rows = workbook.Worksheet(k).RangeUsed().RowsUsed().Skip(StarReadRaw);
                 decodeStr.Append($"Drop Table TBL_{workbook.Worksheet(k).Name} ;Create Table TBL_{workbook.Worksheet(k).Name} (\r\n");
 
-                decodeStr.Append($"    Create_DateTime datetime ,\r\n");
-
+              
                 foreach (var row in rows)
                 {
 
@@ -48,8 +48,7 @@ namespace StructGenerator.Format
                     else
                         decodeStr.Append($"    {fieldName} {type} ,\r\n");
                 }
-                decodeStr.Append("    primary key(Create_DateTime)\r\n");
-
+                decodeStr.Append($"    CreateTime datetime ,\r\n");
                 decodeStr.Append(");\r\n");
             }
 
@@ -60,12 +59,19 @@ namespace StructGenerator.Format
 
         public bool GenFile()
         {
-            if (_decodeStr == null)
-                return false;
+            if (string.IsNullOrEmpty(_decodeStr))
+                throw new ArgumentNullException("Decod Faile. Code Str is empty.");
+       
+            try
+            {
+                FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName + ".sql");
+                return true;
+            }
+            catch(Exception e)
+            {
+                throw new ArgumentException(e.Message);
+            }
 
-            var genOK = FileOpHelper.Instance.WriteToFile(_decodeStr, ExportPath + OutFileName+".sql");
-
-            return genOK;
         }
 
         private string GetSqlTypeCode(string type)
